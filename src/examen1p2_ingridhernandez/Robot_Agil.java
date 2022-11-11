@@ -45,7 +45,19 @@ public class Robot_Agil extends Robot{
 
     @Override
     public String toString() {
-        return "Robot_Agil{" + "cantidadLLantas=" + cantidadLLantas + ", velocidad=" + velocidad + '}';
+        return super.toString()+"Robot_Agil{" + "cantidadLLantas=" + cantidadLLantas + ", velocidad=" + velocidad + '}';
     }
+     public int adv(int x,int y,int x2,int y2){
+        return 0; 
+     }
+    public void chr(){
+       
+    }
+     public void dmnt(){
+         
+     }
+     public int gir (int degrees,char or){
+          return 0;
+     }
     
 }

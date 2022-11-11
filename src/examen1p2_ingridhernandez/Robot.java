@@ -8,7 +8,7 @@ package examen1p2_ingridhernandez;
  *
  * @author ADMINISTRADOR1
  */
-public class Robot {
+public abstract class Robot implements comportamiento {
     private int ID;
     private int x;
     private int y;

@@ -45,7 +45,18 @@ public class Androide extends Robot{
 
     @Override
     public String toString() {
-        return "Androide{" + "altura=" + altura + ", peso=" + peso + '}';
+        return super.toString()+ "Androide{" + "altura=" + altura + ", peso=" + peso + '}';
     }
-    
+     public int adv(int x,int y,int x2,int y2){
+        return 0; 
+     }
+    public void chr(){
+       
+    }
+     public void dmnt(){
+         
+     }
+     public int gir (int degrees,char or){
+          return 0;
+     }
 }

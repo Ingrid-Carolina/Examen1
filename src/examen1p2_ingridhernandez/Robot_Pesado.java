@@ -48,7 +48,19 @@ public class Robot_Pesado extends Robot{
 
     @Override
     public String toString() {
-        return "Robot_Pesado{" + "peso=" + peso + ", capacidad=" + capacidad + '}';
+        return super.toString()+ "Robot_Pesado{" + "peso=" + peso + ", capacidad=" + capacidad + '}';
     }
+     public int adv(int x,int y,int x2,int y2){
+        return 0; 
+     }
+    public void chr(){
+       
+    }
+     public void dmnt(){
+         
+     }
+     public int gir (int degrees,char or){
+          return 0;
+     }
     
 }
