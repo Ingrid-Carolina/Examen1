@@ -16,12 +16,12 @@ public class Robot_Pesado extends Robot{
     super();
     }
 
-    public Robot_Pesado(int peso, int capacidad) {
+    public Robot_Pesado(int peso, int capacidad){
         this.peso = peso;
-        this.setCapacidad(capacidad); 
+        this.capacidad=capacidad; 
     }
 
-    public Robot_Pesado(int peso, int capacidad, int ID, int x, int y, boolean Carga, String Fecha) {
+    public Robot_Pesado(int peso, int capacidad, int ID, int x, int y, boolean Carga, String Fecha){
         super(ID, x, y, Carga, Fecha);
         this.peso = peso;
         this.capacidad = capacidad;

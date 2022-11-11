@@ -21,7 +21,7 @@ public class Robot_Agil extends Robot{
         this.velocidad = velocidad;
     }
 
-    public Robot_Agil(int cantidadLLantas, int velocidad, int ID, int x, int y, boolean Carga, String Fecha) {
+    public Robot_Agil(int cantidadLLantas, int velocidad, int ID, int x, int y, boolean Carga, String Fecha)  {
         super(ID, x, y, Carga, Fecha);
         this.cantidadLLantas = cantidadLLantas;
         this.velocidad = velocidad;

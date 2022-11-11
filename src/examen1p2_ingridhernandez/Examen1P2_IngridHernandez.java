@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package examen1p2_ingridhernandez;
 
 import java.util.ArrayList;
@@ -15,15 +12,13 @@ import java.util.Scanner;
 public class Examen1P2_IngridHernandez {
 static Scanner lea = new Scanner(System.in);
 static ArrayList<Robot> rob = new ArrayList();
-
+static Random r = new Random();
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         // TODO code application logic here
         
-         
-      
         boolean centinela = true;
         while(centinela == true){
             System.out.println("===========Menu=================");
@@ -37,12 +32,18 @@ static ArrayList<Robot> rob = new ArrayList();
             int opcion = lea.nextInt();
             switch (opcion){
                 case 1:{
-                    System.out.println("Ingrese un id: ");
-                    int id=lea.nextInt();
-                    System.out.println("Ingrese la Posicion de X: ");
-                    int x = lea.nextInt();
-                    System.out.println("Ingrese la Posicion de Y: ");
-                    int y = lea.nextInt();
+                    int id=1 + r.nextInt(100000);
+                   System.out.println("Ingrese la Posicion de X: ");
+                   int x = lea.nextInt();
+                   System.out.println("Ingrese la Posicion de Y: ");
+                   int y = lea.nextInt();  
+                    if(x<=0||y<0&&x>=9||y>9){
+                        System.out.println("la posicion no puede ser menor que cero hasta 8");
+                        System.out.println("Ingrese x:");
+                        x=lea.nextInt();
+                             System.out.println("Ingrese y:");
+                        y=lea.nextInt();  
+                    }
                     boolean var = false;
                     System.out.println("Ingrese el Ano de Fabricacion: ");
                     String ano=lea.next();
@@ -113,8 +114,54 @@ static ArrayList<Robot> rob = new ArrayList();
                 }//fin del case 2
                 break;
                 case 3:{
-                    
-                        System.out.println("===============Mapa=================================");
+                    try{
+                       System.out.println("===============Mapa=================================");
+                    int filas = 8;
+                    int colum = 8;
+                    char[][] matriz = new char[filas][colum];
+                    matriz = generarM(filas, colum);
+                    imprimirM(matriz, 0, 0);
+                    System.out.println("");
+                    String ins = "";
+                    System.out.println("Ingrese las instrucciones separadas por comas: ");
+                    System.out.println("""
+                                       u:arriba
+                                       d:abajo
+                                       l:izquierda
+                                       r:derecha
+                                       g:recoger Carga
+                                       s:poner Carga""");
+                    ins = lea.nextLine();
+                    ins = lea.next();
+//                    char[] insc = ins.toCharArray();
+//
+//                    //System.out.println(insc);
+//                    int p1 = 0;
+//                    int p2 = 0;
+//                    for (int i = 0; i < matriz.length; i++) {
+//                        for (int j = 0; j < matriz[i].length; j++) {
+//                            if (matriz[i][j] == 'R') {
+//                                p1 = i;
+//                                p2 = j;
+//                            }
+//                        }
+//                    }
+//                    int cont = 0;
+//                    //while (cont <insc.length ){
+//                    char[][] matriz2 = adv(matriz, insc, p1, p2);
+//                    //imprimirM(matriz2,0,0);
+//                    System.out.println("");
+//                    System.out.println("");
+//                    cont = cont + 1; 
+                    }catch (Exception e){
+                        System.out.println("Tienes que crear un Robot Primero!");
+                    }
+                        
+                }//fin del case 3
+                break;
+                case 4: {
+                  try{
+                         System.out.println("===============Mapa=================================");
                     int filas = 8;
                     int colum = 8;
                     char[][] matriz = new char[filas][colum];
@@ -151,11 +198,13 @@ static ArrayList<Robot> rob = new ArrayList();
                     //imprimirM(matriz2,0,0);
                     System.out.println("");
                     System.out.println("");
-                    cont = cont + 1;
-                }//fin del case 3
-                break;
-                case 4: {
-
+                    cont = cont + 1;     
+                  }catch (Exception e){
+                      System.out.println("Tienes que crear un Robot Primero!");
+                  }
+                  
+                    
+                    
                 }// fin del case 4
                 break;
                 case 5:
@@ -192,11 +241,11 @@ static ArrayList<Robot> rob = new ArrayList();
                         matrizg[i][j]= ' ';
                     }
                 }//
-                if (i==7 && j ==7) {
+                if (i==7&& j ==7) {
                     matrizg[i][j]= 'R';
                 }
                 if (i==8 && j ==5) {
-                    matrizg[i][j]= 'O';
+                    matrizg[i][j]= 'D';
                 }
  
             }
@@ -266,7 +315,7 @@ static ArrayList<Robot> rob = new ArrayList();
         
         int i=0;
         while(i < ins.length){
-            //for (int i = 0; i < ins.length; i++) {
+           
             char a = ins[i];
             int cont = 0;
                 if (matriz[p1][p2]=='R') {

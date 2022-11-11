@@ -18,10 +18,10 @@ public abstract class Robot implements comportamiento {
     public Robot() {
     }
 
-    public Robot(int ID, int x, int y, boolean Carga, String Fecha) {
+    public Robot(int ID, int x, int y, boolean Carga, String Fecha)  {
         this.ID = ID;
-        this.x = x;
-        this.y = y;
+        this.setX(x);
+        this.setY(y);
         this.Carga = Carga;
         this.Fecha = Fecha;
     }
@@ -38,16 +38,20 @@ public abstract class Robot implements comportamiento {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public void setX(int x){
+        if(x>0&&x<9){
+         this.x = x;   
+        }
     }
 
     public int getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(int y){
+        if(y>0&&y<9){
         this.y = y;
+        } 
     }
 
     public boolean isCarga() {

@@ -21,7 +21,7 @@ public class Androide extends Robot{
         this.peso = peso;
     }
 
-    public Androide(int altura, int peso, int ID, int x, int y, boolean Carga, String Fecha) {
+    public Androide(int altura, int peso, int ID, int x, int y, boolean Carga, String Fecha)  {
         super(ID, x, y, Carga, Fecha);
         this.altura = altura;
         this.peso = peso;
