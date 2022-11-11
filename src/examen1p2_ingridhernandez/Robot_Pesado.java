@@ -18,7 +18,7 @@ public class Robot_Pesado extends Robot{
 
     public Robot_Pesado(int peso, int capacidad) {
         this.peso = peso;
-        this.capacidad = capacidad;
+        this.setCapacidad(capacidad); 
     }
 
     public Robot_Pesado(int peso, int capacidad, int ID, int x, int y, boolean Carga, String Fecha) {
@@ -40,7 +40,10 @@ public class Robot_Pesado extends Robot{
     }
 
     public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
+        if(capacidad >5){
+            this.capacidad = capacidad; 
+        }
+       
     }
 
     @Override
