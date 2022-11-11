@@ -16,6 +16,7 @@ import javax.swing.DefaultComboBoxModel;
 public class Examen1P2_IngridHernandez {
 static Scanner lea = new Scanner(System.in);
 ArrayList<Robot> rob = new ArrayList();
+Robot t = new Robot();
     /**
      * @param args the command line arguments
      */
@@ -61,26 +62,27 @@ ArrayList<Robot> rob = new ArrayList();
     }//fin while
         
     }
-     public static int idGenerator() {
-        Random rnd = new Random();
-        int id = rnd.nextInt(1000);
-        boolean centinela = false;
-        while (centinela == true) {
-            int cont = 0;
-            DefaultComboBoxModel lista = a.getListaJugadores();
-            for (int i = 0; i < lista.getSize(); i++) {
-                if (lista.getElementAt(i) instanceof Robot jugadores) {
-                    if (jugadores.getID() == id) {
-                        cont++;
-                    }
-                }
-            }
-            if (cont > 0) {
-                id = rnd.nextInt();
-            } else {
-                centinela = true;
-            }
-        }
-        return id;
-    }
+//     public static int idGenerator() {
+//        Random rnd = new Random();
+//        int id = rnd.nextInt(1000);
+//        boolean centinela = false;
+//        while (centinela == true) {
+//            int cont = 0;
+//            
+//            //DefaultComboBoxModel lista = a.getListaJugadores();
+//            for (int i = 0; i < lista.getSize(); i++) {
+//                if (lista.getElementAt(i) instanceof Robot ro) {
+//                    if (ro.getID() == id) {
+//                        cont++;
+//                    }
+//                }
+//            }
+//            if (cont > 0) {
+//                id = rnd.nextInt();
+//            } else {
+//                centinela = true;
+//            }
+//        }
+//        return id;
+//    }
 }
