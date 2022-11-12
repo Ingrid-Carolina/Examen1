@@ -129,8 +129,9 @@ static Random r = new Random();
                                        I:Izquierda
                                        B:Bajo""");
                     char v = lea.next().charAt(0);
+                    System.out.println("El Roboto giro asi: ");
                     gir(ang, v);
-                   
+                  
                     
 //                   
                 }//fin del case 3
@@ -190,42 +191,43 @@ static Random r = new Random();
     }//fin while
         
     }
-    public static char [][] generarM(int filas, int colum){
-        char [][]matrizg= new char[filas][colum];
+    public static char[][] generarM(int filas, int colum) {
+        char[][] matrizg = new char[filas][colum];
         for (int i = 0; i < matrizg.length; i++) {
             for (int j = 0; j < matrizg[i].length; j++) {
-                matrizg[i][j]= ' ';
-                if ((j == 1|| j== 5) && (i<=5)) {
-                    matrizg[i][j]='X';
-                    if (i== 0) {
-                        matrizg[i][j]= ' ';
+                matrizg[i][j] = ' ';
+                if ((j == 1 || j == 5) && (i <= 5)) {
+                    matrizg[i][j] = 'X';
+                    if (i == 0) {
+                        matrizg[i][j] = ' ';
                     }
                 }//
-                if (i==4) {
-                    if (j>1&&j<5) {
-                        matrizg[i][j]= 'C';
+                if (i == 4) {
+                    if (j > 1 && j < 5) {
+                        matrizg[i][j] = 'C';
                     }
                 }
-                if (i==5) {
-                    if ((j<=5)){
-                        matrizg[i][j]='X';
+                if (i == 5) {
+                    if ((j <= 5)) {
+                        matrizg[i][j] = 'X';
                     }
-                    if (j== 0) {
-                        matrizg[i][j]= ' ';
+                    if (j == 0) {
+                        matrizg[i][j] = ' ';
                     }
                 }//
-                if (i==7&& j ==7) {
-                    matrizg[i][j]= 'R';
+                if (i == 7 && j == 7) {
+                    matrizg[i][j] = 'R';
                 }
-                if (i==8 && j ==5) {
-                    matrizg[i][j]= 'D';
+                if (i == 8 && j == 5) {
+                    matrizg[i][j] = 'D';
                 }
- 
+
             }
         }
         return matrizg;
-    }    
-    public void rellenarTablero(char[][]tablero,int filas, int columnas) {
+    }
+
+    public void rellenarTablero(char[][] tablero, int filas, int columnas) {
         Random rnd = new Random();
         //Correr por la matriz
         int numrobi = rnd.nextInt(7);
@@ -234,9 +236,9 @@ static Random r = new Random();
         int numObstaculoj = rnd.nextInt(7);
 
         //restricciones en la colocacion del gusano
-        while (numrobi> 0 && numrobj < 6 && numrobj == 1 || numrobi > 0 && numrobi
+        while (numrobi > 0 && numrobj < 6 && numrobj == 1 || numrobi > 0 && numrobi
                 < 6 && numrobj == 5 || numrobi == 5 && numrobj > 1 && numrobj < 5 || numrobi
-                == 4 && numrobj > 1 && numrobj< 5) {
+                == 4 && numrobj > 1 && numrobj < 5) {
 
             numrobi = rnd.nextInt(7);
             numrobj = rnd.nextInt(7);
@@ -248,7 +250,7 @@ static Random r = new Random();
             numObstaculoi = rnd.nextInt(7);
             numObstaculoj = rnd.nextInt(7);
         }
-        
+
         //Dentro de una matriz
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
@@ -269,114 +271,103 @@ static Random r = new Random();
         }
     }
 
-     public static void imprimirM(char matriz[][],int filas,int col) {
-    if (filas == matriz.length - 1 && col == matriz[0].length - 1) {
-        System.out.print("["+ matriz[filas][col] +"]");            
-    } else {
-        if (col == matriz[0].length-1) {   
-            System.out.println( "["+matriz[filas][col]+"]" ); 
-            imprimirM(matriz, filas+1, 0);
+    public static void imprimirM(char matriz[][], int filas, int col) {
+        if (filas == matriz.length - 1 && col == matriz[0].length - 1) {
+            System.out.print("[" + matriz[filas][col] + "]");
         } else {
-            System.out.print("["+ matriz[filas][col]+"]"); 
-            imprimirM(matriz, filas, col+1);
+            if (col == matriz[0].length - 1) {
+                System.out.println("[" + matriz[filas][col] + "]");
+                imprimirM(matriz, filas + 1, 0);
+            } else {
+                System.out.print("[" + matriz[filas][col] + "]");
+                imprimirM(matriz, filas, col + 1);
+            }
         }
+
     }
-        
-}
-      public static char [][]adv(char[][]matriz, char[] ins, int p1,int p2){
-        
-        
-        int i=0;
-        while(i < ins.length){
-           
+
+    public static char[][] adv(char[][] matriz, char[] ins, int p1, int p2) {
+
+        int i = 0;
+        while (i < ins.length) {
+
             char a = ins[i];
             int cont = 0;
-                if (matriz[p1][p2]=='R') {
-                    if (a=='u'||a=='U') {
-                        if (matriz[p1-1][p2] != 'X') {
-                            matriz[p1][p2]=' ';
-                        matriz[p1-1][p2] = 'R';
-                        }
-                        else{ 
-                            System.out.println("el Robot no puede atravesar la barrera.");
-                        }
+            if (matriz[p1][p2] == 'R') {
+                if (a == 'u' || a == 'U') {
+                    if (matriz[p1 - 1][p2] != 'X') {
+                        matriz[p1][p2] = ' ';
+                        matriz[p1 - 1][p2] = 'R';
+                    } else {
+                        System.out.println("el Robot no puede atravesar la barrera.");
                     }
-                    else if (a=='d'||a=='D') {
-                        if (matriz[p1+1][p2] != 'X') {
-                        matriz[p1][p2]=' ';
-                        matriz[p1+1][p2] = 'R';
-                        }
-                        else{ 
-                            System.out.println("el Robot no puede atravesar la barrera.");
-                        }
+                } else if (a == 'd' || a == 'D') {
+                    if (matriz[p1 + 1][p2] != 'X') {
+                        matriz[p1][p2] = ' ';
+                        matriz[p1 + 1][p2] = 'R';
+                    } else {
+                        System.out.println("el Robot no puede atravesar la barrera.");
                     }
-                    else if (a=='l'||a=='L') {
-                        if (matriz[p1][p2-1] != 'X') {
-                        matriz[p1][p2]=' ';
-                        matriz[p1][p2-1] = 'R';
-                        }
-                        else{ 
-                            System.out.println("el robot no puede atravesar la barrera.");
-                        }
+                } else if (a == 'l' || a == 'L') {
+                    if (matriz[p1][p2 - 1] != 'X') {
+                        matriz[p1][p2] = ' ';
+                        matriz[p1][p2 - 1] = 'R';
+                    } else {
+                        System.out.println("el robot no puede atravesar la barrera.");
                     }
-                    else if (a=='r'||a=='R') {
-                        if (matriz[p1][p2+1] != 'X') {
-                        matriz[p1][p2]=' ';
-                        matriz[p1][p2+1] = 'R';
-                        }
-                        
-                        else{ 
-                            System.out.println("el gusanito no puede atravesar la barrera.");
-                        }
+                } else if (a == 'r' || a == 'R') {
+                    if (matriz[p1][p2 + 1] != 'X') {
+                        matriz[p1][p2] = ' ';
+                        matriz[p1][p2 + 1] = 'R';
+                    } else {
+                        System.out.println("el gusanito no puede atravesar la barrera.");
                     }
-                    if (a=='g'||a=='G') {
-                        if (matriz[p1-1][p2] != 'X') {
-                            if (matriz[p1+1][p2] == 'C') {
-                                cont = cont +1;
-                                matriz[p1+1][p2] = ' ';
-                            }
-                        
-                        else{
+                }
+                if (a == 'g' || a == 'G') {
+                    if (matriz[p1 - 1][p2] != 'X') {
+                        if (matriz[p1 + 1][p2] == 'C') {
+                            cont = cont + 1;
+                            matriz[p1 + 1][p2] = ' ';
+                        } else {
                             System.out.println("No hay Carga por recoger.");
                         }
-                        }
-                        else{ 
-                            System.out.println("el Robot no puede atravesar la barrera.");
-                        }
+                    } else {
+                        System.out.println("el Robot no puede atravesar la barrera.");
                     }
-                       if (a=='s'||a=='s') {
-                        if (matriz[p1+1][p2] == 'O'&& cont ==3) {
-                            
-                            System.out.println("HA GANADO");
-                        }
-                        else{
-                            if(cont <3){
+                }
+                if (a == 's' || a == 's') {
+                    if (matriz[p1 + 1][p2] == 'O' && cont == 3) {
+
+                        System.out.println("HA GANADO");
+                    } else {
+                        if (cont < 3) {
                             System.out.println("No hay cargas suficientes.");
-                            }
-                            else if (matriz[p1+1][p2] != 'D') {
-                                System.out.println("No puede poner la carga aqui.");
-                            }
+                        } else if (matriz[p1 + 1][p2] != 'D') {
+                            System.out.println("No puede poner la carga aqui.");
                         }
                     }
-                    for (int h = 0; h < matriz.length; h++) {
-                        for (int b = 0; b < matriz[h].length; b++) {   
-                            if (matriz[h][b]=='R') {
-                                p1= h;
-                                p2 = b;
-                            }
+                }
+                for (int h = 0; h < matriz.length; h++) {
+                    for (int b = 0; b < matriz[h].length; b++) {
+                        if (matriz[h][b] == 'R') {
+                            p1 = h;
+                            p2 = b;
                         }
                     }
-                    
-                } i = i+1; 
-                System.out.println("");
-                System.out.println("");
-                imprimirM(matriz,0,0);
+                }
+
             }
-       // }
+            i = i + 1;
+            System.out.println("");
+            System.out.println("");
+            imprimirM(matriz, 0, 0);
+        }
+        // }
         return matriz;
     }
-public static char[][]LlenaTablero(int fila, int col){
-        char [][]matrizt = new char [fila][col];
+
+    public static char[][] LlenaTablero(int fila, int col) {
+        char[][] matrizt = new char[fila][col];
         for (int i = 0; i < fila; i++) {
             for (int j = 0; j < col; j++) {
                 //Obstaculos
@@ -385,7 +376,7 @@ public static char[][]LlenaTablero(int fila, int col){
                 matrizt[2][1] = 'X';
                 matrizt[3][6] = 'X';
                 matrizt[4][5] = 'X';
-                
+
                 //Cajas
                 matrizt[3][4] = 'C';
                 matrizt[7][1] = 'C';
@@ -393,66 +384,65 @@ public static char[][]LlenaTablero(int fila, int col){
                 matrizt[1][3] = 'C';
                 matrizt[5][7] = 'C';
                 matrizt[6][5] = 'C';
-                
+
                 matrizt[i][j] = ' ';
-                
+
             }
         }
         return matrizt;
     }
-      public static void ImprimeMatriz(char [][] matriz, int x, int y){
-          System.out.println(x + ""+y);
+
+    public static void ImprimeMatriz(char[][] matriz, int x, int y) {
+        System.out.println(x + "" + y);
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 if (i == x && j == y) {
                     System.out.print("[R] ");
-                }else{
-                System.out.print("["+matriz[i][j]+"] ");
+                } else {
+                    System.out.print("[" + matriz[i][j] + "] ");
                 }
             }
             System.out.println();
-}
-}
- public static char gir (int degrees,char or){
-         if(degrees== 90 && or == 'I'){//viendo para la izquierda
-              or ='A';
-             
-        }else if(degrees ==90&& or == 'D'){//viendo para la derecha
-            or= 'B';
-        }else if(degrees == 90 && or == 'A' ){//viendo para arriba
-            or = 'D';
-            
-        }else if(degrees ==90 && or == 'B'){ // viendo para abajo
-            or = 'I';
-            
-            
-            
-            
-        }if(degrees== 180 && or == 'I'){//viendo para la izquierda
-              or ='D';
-             
-        }else if(degrees ==180&& or == 'D'){//viendo para la derecha
-            or= 'I';
-        }else if(degrees == 180 && or == 'A' ){//viendo para arriva
-            or = 'B';
-            
-        }else if(degrees ==180 && or == 'B'){ // viendo para abajo
+        }
+    }
+
+    public static char gir(int degrees, char or) {
+        if (degrees == 90 && or == 'I') {//viendo para la izquierda
             or = 'A';
-            
-            
-        }if(degrees== 270 && or == 'I'){//viendo para la izquierda
-              or ='B';
-             
-        }else if(degrees ==270&& or == 'D'){//viendo para la derecha
-            or= 'A';
-        }else if(degrees == 270 && or == 'A' ){//viendo para arriva
+            System.out.println(or);
+        } else if (degrees == 90 && or == 'D') {//viendo para la derecha
+            or = 'B';
+        } else if (degrees == 90 && or == 'A') {//viendo para arriba
+            or = 'D';
+
+        } else if (degrees == 90 && or == 'B') { // viendo para abajo
             or = 'I';
-            
-        }else if(degrees ==270&& or == 'B'){ // viendo para abajo
+
+        }
+        if (degrees == 180 && or == 'I') {//viendo para la izquierda
+            or = 'D';
+
+        } else if (degrees == 180 && or == 'D') {//viendo para la derecha
+            or = 'I';
+        } else if (degrees == 180 && or == 'A') {//viendo para arriva
+            or = 'B';
+
+        } else if (degrees == 180 && or == 'B') { // viendo para abajo
+            or = 'A';
+
+        }
+        if (degrees == 270 && or == 'I') {//viendo para la izquierda
+            or = 'B';
+
+        } else if (degrees == 270 && or == 'D') {//viendo para la derecha
+            or = 'A';
+        } else if (degrees == 270 && or == 'A') {//viendo para arriva
+            or = 'I';
+
+        } else if (degrees == 270 && or == 'B') { // viendo para abajo
             or = 'D';
         }
-        
-        
+
         return or;
-     }
+    }
 }
