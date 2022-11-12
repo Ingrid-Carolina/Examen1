@@ -48,7 +48,7 @@ public class Androide extends Robot{
         return super.toString()+ "Androide{" + "altura=" + altura + ", peso=" + peso + '}';
     }
      public int adv(int x,int y,int x2,int y2){
-        return 0; 
+      return 0;  
      }
     public void chr(){
        
@@ -56,7 +56,61 @@ public class Androide extends Robot{
      public void dmnt(){
          
      }
-     public int gir (int degrees,char or){
-          return 0;
-     }
+
+    /**
+     *
+     * @param degrees
+     * @param or
+     */
+    @Override
+     public void gir (int degrees,char or){
+         
+          if(degrees== 90 && or == 'I'){//viendo para la izquierda
+              or ='A';
+             
+        }else if(degrees ==90&& or == 'D'){//viendo para la derecha
+            or= 'B';
+        }else if(degrees == 90 && or == 'A' ){//viendo para arriba
+            or = 'D';
+            
+        }else if(degrees ==90 && or == 'B'){ // viendo para abajo
+            or = 'I';
+            
+            
+            
+            
+        }if(degrees== 180 && or == 'I'){//viendo para la izquierda
+              or ='D';
+             
+        }else if(degrees ==180&& or == 'D'){//viendo para la derecha
+            or= 'I';
+        }else if(degrees == 180 && or == 'A' ){//viendo para arriva
+            or = 'B';
+            
+        }else if(degrees ==180 && or == 'B'){ // viendo para abajo
+            or = 'A';
+            
+            
+            
+            
+            
+        }if(degrees== 270 && or == 'I'){//viendo para la izquierda
+              or ='B';
+             
+        }else if(degrees ==270&& or == 'D'){//viendo para la derecha
+            or= 'A';
+        }else if(degrees == 270 && or == 'A' ){//viendo para arriva
+            or = 'I';
+            
+        }else if(degrees ==270&& or == 'B'){ // viendo para abajo
+            or = 'D';
+        }
+        
+        
+        
+        
+        
+        
+}
+     
 }

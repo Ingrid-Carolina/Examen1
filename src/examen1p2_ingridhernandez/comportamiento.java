@@ -12,5 +12,6 @@ public interface comportamiento {
     public int adv(int x,int y,int x2,int y2);
     public void chr();
      public void dmnt();
-     public int gir (int degrees,char or);
+
+    public void gir (int degrees,char or);
 }
