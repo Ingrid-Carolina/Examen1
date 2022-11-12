@@ -121,8 +121,21 @@ static Random r = new Random();
                     matriz =LlenaTablero(8,8);
                     ImprimeMatriz(matriz,x,y);
                     System.out.println("Ingrese el angulo de va estar: ");
-                    int ang =lea.nextInt();
-                    System.out.println("Ingrese las instrucciones rotar la variable: ");
+                    System.out.println("""
+                                       1:Angulo de 90
+                                       2:Angulo de 180
+                                       3:Angulo de 270
+                                       """);
+                    int p =lea.nextInt();
+                    int ang=0;
+                    if(p== 1){
+                        ang=90;
+                    }else if(p == 2){
+                    ang= 180;
+                    }else if(p == 3){
+                        ang = 270;
+                    }
+                     System.out.println("Ingrese las instrucciones rotar la variable: ");
                     System.out.println("""
                                        A:Arriba
                                        D:Derecha
@@ -137,7 +150,7 @@ static Random r = new Random();
                 }//fin del case 3
                 break;
                 case 4: {
-                  try{
+                  
                          System.out.println("===============Mapa=================================");
                     int filas = 8;
                     int colum = 8;
@@ -147,6 +160,7 @@ static Random r = new Random();
                     System.out.println("");
                     String ins = "";
                     System.out.println("Ingrese las instrucciones separadas por comas: ");
+                    System.out.println("Ejemplo u,u,u,u,u,u,u,l,l,l,d,d,d,g,l,g,l,g,u,u,u (puede utilizar esta cadena para ver)");
                     System.out.println("""
                                        u:arriba
                                        d:abajo
@@ -176,9 +190,7 @@ static Random r = new Random();
                     System.out.println("");
                     System.out.println("");
                     cont = cont + 1;     
-                  }catch (Exception e){
-                      System.out.println("Tienes que crear un Robot Primero!");
-                  }
+                  
                 }// fin del case 4
                 break;
                 case 5:
@@ -409,38 +421,44 @@ static Random r = new Random();
     public static char gir(int degrees, char or) {
         if (degrees == 90 && or == 'I') {//viendo para la izquierda
             or = 'A';
-            System.out.println(or);
+            System.out.println("Arriba");
         } else if (degrees == 90 && or == 'D') {//viendo para la derecha
             or = 'B';
+            System.out.println("Abajo");
         } else if (degrees == 90 && or == 'A') {//viendo para arriba
             or = 'D';
-
+            System.out.println("Derecha");
         } else if (degrees == 90 && or == 'B') { // viendo para abajo
             or = 'I';
+            System.out.println("Izquierda");
 
         }
         if (degrees == 180 && or == 'I') {//viendo para la izquierda
             or = 'D';
-
+            System.out.println("Derecha");
         } else if (degrees == 180 && or == 'D') {//viendo para la derecha
             or = 'I';
+            System.out.println("Izquierda");
         } else if (degrees == 180 && or == 'A') {//viendo para arriva
             or = 'B';
-
+            System.out.println("Abajo");
         } else if (degrees == 180 && or == 'B') { // viendo para abajo
             or = 'A';
+            System.out.println("Arriba");
 
         }
         if (degrees == 270 && or == 'I') {//viendo para la izquierda
             or = 'B';
-
+            System.out.println("Abajo");
         } else if (degrees == 270 && or == 'D') {//viendo para la derecha
             or = 'A';
+            System.out.println("Arriba");
         } else if (degrees == 270 && or == 'A') {//viendo para arriva
             or = 'I';
-
+            System.out.println("Izquierda");
         } else if (degrees == 270 && or == 'B') { // viendo para abajo
             or = 'D';
+            System.out.println("Derecha");
         }
 
         return or;
