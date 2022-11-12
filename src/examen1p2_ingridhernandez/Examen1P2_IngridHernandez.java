@@ -117,7 +117,6 @@ static Random r = new Random();
                     System.out.println("===============Mapa=================================");
                     int filas = 8;
                     int colum = 8;
-                    Androide p = new Androide ();
                     char[][] matriz = new char[filas][colum];
                     matriz =LlenaTablero(8,8);
                     ImprimeMatriz(matriz,x,y);
@@ -130,7 +129,9 @@ static Random r = new Random();
                                        I:Izquierda
                                        B:Bajo""");
                     char v = lea.next().charAt(0);
-                    p.gir(ang, v);
+                    gir(ang, v);
+                   
+                    
 //                   
                 }//fin del case 3
                 break;
@@ -412,4 +413,46 @@ public static char[][]LlenaTablero(int fila, int col){
             System.out.println();
 }
 }
+ public static char gir (int degrees,char or){
+         if(degrees== 90 && or == 'I'){//viendo para la izquierda
+              or ='A';
+             
+        }else if(degrees ==90&& or == 'D'){//viendo para la derecha
+            or= 'B';
+        }else if(degrees == 90 && or == 'A' ){//viendo para arriba
+            or = 'D';
+            
+        }else if(degrees ==90 && or == 'B'){ // viendo para abajo
+            or = 'I';
+            
+            
+            
+            
+        }if(degrees== 180 && or == 'I'){//viendo para la izquierda
+              or ='D';
+             
+        }else if(degrees ==180&& or == 'D'){//viendo para la derecha
+            or= 'I';
+        }else if(degrees == 180 && or == 'A' ){//viendo para arriva
+            or = 'B';
+            
+        }else if(degrees ==180 && or == 'B'){ // viendo para abajo
+            or = 'A';
+            
+            
+        }if(degrees== 270 && or == 'I'){//viendo para la izquierda
+              or ='B';
+             
+        }else if(degrees ==270&& or == 'D'){//viendo para la derecha
+            or= 'A';
+        }else if(degrees == 270 && or == 'A' ){//viendo para arriva
+            or = 'I';
+            
+        }else if(degrees ==270&& or == 'B'){ // viendo para abajo
+            or = 'D';
+        }
+        
+        
+        return or;
+     }
 }
