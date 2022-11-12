@@ -18,7 +18,7 @@ static Random r = new Random();
      */
     public static void main(String[] args)  {
         // TODO code application logic here
-        
+        int x=0,y=0;
         boolean centinela = true;
         while(centinela == true){
             System.out.println("===========Menu=================");
@@ -34,9 +34,9 @@ static Random r = new Random();
                 case 1:{
                     int id=1 + r.nextInt(100000);
                    System.out.println("Ingrese la Posicion de X: ");
-                   int x = lea.nextInt();
+                   x = lea.nextInt();
                    System.out.println("Ingrese la Posicion de Y: ");
-                   int y = lea.nextInt();  
+                   y = lea.nextInt();  
                     if(x<=0||y<0&&x>=9||y>9){
                         System.out.println("la posicion no puede ser menor que cero hasta 8");
                         System.out.println("Ingrese x:");
@@ -114,49 +114,24 @@ static Random r = new Random();
                 }//fin del case 2
                 break;
                 case 3:{
-                    try{
-                       System.out.println("===============Mapa=================================");
+                    System.out.println("===============Mapa=================================");
                     int filas = 8;
                     int colum = 8;
+                    Androide p = new Androide ();
                     char[][] matriz = new char[filas][colum];
-                    matriz = generarM(filas, colum);
-                    imprimirM(matriz, 0, 0);
-                    System.out.println("");
-                    String ins = "";
-                    System.out.println("Ingrese las instrucciones separadas por comas: ");
+                    matriz =LlenaTablero(8,8);
+                    ImprimeMatriz(matriz,x,y);
+                    System.out.println("Ingrese el angulo de va estar: ");
+                    int ang =lea.nextInt();
+                    System.out.println("Ingrese las instrucciones rotar la variable: ");
                     System.out.println("""
-                                       u:arriba
-                                       d:abajo
-                                       l:izquierda
-                                       r:derecha
-                                       g:recoger Carga
-                                       s:poner Carga""");
-                    ins = lea.nextLine();
-                    ins = lea.next();
-//                    char[] insc = ins.toCharArray();
-//
-//                    //System.out.println(insc);
-//                    int p1 = 0;
-//                    int p2 = 0;
-//                    for (int i = 0; i < matriz.length; i++) {
-//                        for (int j = 0; j < matriz[i].length; j++) {
-//                            if (matriz[i][j] == 'R') {
-//                                p1 = i;
-//                                p2 = j;
-//                            }
-//                        }
-//                    }
-//                    int cont = 0;
-//                    //while (cont <insc.length ){
-//                    char[][] matriz2 = adv(matriz, insc, p1, p2);
-//                    //imprimirM(matriz2,0,0);
-//                    System.out.println("");
-//                    System.out.println("");
-//                    cont = cont + 1; 
-                    }catch (Exception e){
-                        System.out.println("Tienes que crear un Robot Primero!");
-                    }
-                        
+                                       A:Arriba
+                                       D:Derecha
+                                       I:Izquierda
+                                       B:Bajo""");
+                    char v = lea.next().charAt(0);
+                    p.gir(ang, v);
+//                   
                 }//fin del case 3
                 break;
                 case 4: {
@@ -202,9 +177,6 @@ static Random r = new Random();
                   }catch (Exception e){
                       System.out.println("Tienes que crear un Robot Primero!");
                   }
-                  
-                    
-                    
                 }// fin del case 4
                 break;
                 case 5:
@@ -402,4 +374,42 @@ static Random r = new Random();
        // }
         return matriz;
     }
+public static char[][]LlenaTablero(int fila, int col){
+        char [][]matrizt = new char [fila][col];
+        for (int i = 0; i < fila; i++) {
+            for (int j = 0; j < col; j++) {
+                //Obstaculos
+                matrizt[2][3] = 'X';
+                matrizt[5][4] = 'X';
+                matrizt[2][1] = 'X';
+                matrizt[3][6] = 'X';
+                matrizt[4][5] = 'X';
+                
+                //Cajas
+                matrizt[3][4] = 'C';
+                matrizt[7][1] = 'C';
+                matrizt[6][2] = 'C';
+                matrizt[1][3] = 'C';
+                matrizt[5][7] = 'C';
+                matrizt[6][5] = 'C';
+                
+                matrizt[i][j] = ' ';
+                
+            }
+        }
+        return matrizt;
+    }
+      public static void ImprimeMatriz(char [][] matriz, int x, int y){
+          System.out.println(x + ""+y);
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (i == x && j == y) {
+                    System.out.print("[R] ");
+                }else{
+                System.out.print("["+matriz[i][j]+"] ");
+                }
+            }
+            System.out.println();
+}
+}
 }

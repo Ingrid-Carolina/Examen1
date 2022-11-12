@@ -64,8 +64,7 @@ public class Androide extends Robot{
      */
     @Override
      public void gir (int degrees,char or){
-         
-          if(degrees== 90 && or == 'I'){//viendo para la izquierda
+         if(degrees== 90 && or == 'I'){//viendo para la izquierda
               or ='A';
              
         }else if(degrees ==90&& or == 'D'){//viendo para la derecha
